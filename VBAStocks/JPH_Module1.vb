@@ -57,13 +57,13 @@ For Each ws In ThisWorkbook.Worksheets
         ws.Range("J" & Summary_Table_Row).Value = Yearly_change
         If (Yearly_change >= 0) Then
 
-        ' Color the Yearly_Change grade green
+        ' Color the Yearly_Change cell to green
         ws.Range("J" & Summary_Table_Row).Interior.ColorIndex = 4
 
-        ' Check if the student's grade is less than or equal to 0...
+        ' Check if the Yearly_change is less than or equal to 0...
         ElseIf (Yearly_change <= 0) Then
 
-        ' Color the Yearly_Change Red
+        ' Color the Yearly_Change cell to Red
         ws.Range("J" & Summary_Table_Row).Interior.ColorIndex = 3
         End If
               
@@ -74,7 +74,7 @@ For Each ws In ThisWorkbook.Worksheets
             Percent_Change = (Year_Open - Year_Close) / Year_Close
             
         End If
-         ws.Range("K" & Summary_Table_Row) = Format(Percent_Change, [0.00] & "%")
+         ws.Range("K" & Summary_Table_Row) = Format(Percent_Change, ["0.00"] & "%")
         
         ' Print the Volume to the Summary Table
         ws.Range("L" & Summary_Table_Row).Value = Volume
