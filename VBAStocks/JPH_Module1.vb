@@ -74,7 +74,7 @@ For Each ws In ThisWorkbook.Worksheets
             Percent_Change = (Year_Open - Year_Close) / Year_Close
             
         End If
-         ws.Range("K" & Summary_Table_Row) = Format(Percent_Change, ["0.00"] & "%")
+         ws.Range("K" & Summary_Table_Row).Value = Format(Percent_Change, ["0.00"] & "%")
         
         ' Print the Volume to the Summary Table
         ws.Range("L" & Summary_Table_Row).Value = Volume
