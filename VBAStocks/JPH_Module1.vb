@@ -14,6 +14,13 @@ For Each ws In ThisWorkbook.Worksheets
     ws.Cells(1, 10).Value = "Yearly Change"
     ws.Cells(1, 11).Value = "Percent Change"
     ws.Cells(1, 12).Value = "Total Stock Volume"
+    ws.Cells(2, 14).Value = "Greatest % Increase"
+    ws.Cells(3, 14).value = "Greatest % Decrease"
+    ws.Cells(4, 14).Value = "Greatest Total Volume"
+    ws.Cells(1, 15).Value = "Ticker"
+    ws.Cells(1, 16).Value = "Value"
+
+
 
     ' Set an initial variable for holding the Ticker Symbol
     Dim Ticker As String
