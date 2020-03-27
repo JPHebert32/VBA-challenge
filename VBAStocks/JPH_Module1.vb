@@ -64,23 +64,23 @@ For Each ws In ThisWorkbook.Worksheets
         Volume = Volume + ws.Cells(i, 7).Value
 
         ' Print the Ticker Symbol in the Summary Table
-        ws.range("I" & Summary_Table_Row).Value = Ticker
+        ws.Range("I" & Summary_Table_Row).Value = Ticker
       
         ' Print the Yearly Change in the Summary Table
         Yearly_change = Year_Open - Year_Close
         
         ' Check if the Yearly_Change is greater than or equal 0
-        ws.range("J" & Summary_Table_Row).Value = Yearly_change
+        ws.Range("J" & Summary_Table_Row).Value = Yearly_change
         If (Yearly_change >= 0) Then
 
         ' Color the Yearly_Change cell to green
-        ws.range("J" & Summary_Table_Row).Interior.ColorIndex = 4
+        ws.Range("J" & Summary_Table_Row).Interior.ColorIndex = 4
 
         ' Check if the Yearly_change is less than or equal to 0...
         ElseIf (Yearly_change <= 0) Then
 
         ' Color the Yearly_Change cell to Red
-        ws.range("J" & Summary_Table_Row).Interior.ColorIndex = 3
+        ws.Range("J" & Summary_Table_Row).Interior.ColorIndex = 3
         End If
               
         'Print the Percent Change in the Summary Table
@@ -90,10 +90,10 @@ For Each ws In ThisWorkbook.Worksheets
             Percent_Change = (Year_Open - Year_Close) / Year_Close
             
         End If
-         ws.range("K" & Summary_Table_Row).Value = Format(Percent_Change, ["0.00"] & "%")
+         ws.Range("K" & Summary_Table_Row).Value = Format(Percent_Change, ["0.00"] & "%")
         
         ' Print the Volume to the Summary Table
-        ws.range("L" & Summary_Table_Row).Value = Volume
+        ws.Range("L" & Summary_Table_Row).Value = Volume
 
         ' Add one to the summary table row
         Summary_Table_Row = Summary_Table_Row + 1
@@ -117,60 +117,60 @@ For Each ws In ThisWorkbook.Worksheets
     
     'Challenge 1
     'Pecent Change Variables
-    Dim Percent_Range As range
+    Dim Percent_Range As Range
     Dim Max_Increase As Double
     Dim Max_Decrease As Double
 
 
     'Max Total Volume Variables
-    Dim Volume_Range As range
+    Dim Volume_Range As Range
     Dim Max_Volume As Double
 
-    Dim Find_Range As range
+    Dim Find_Range As Range
     Dim j, LastRow2 As Integer
     
     'Find and Assign Percent Change Max Increase
     Set Percent_Range = ws.Columns("K")
     Max_Increase = ws.Application.Max(Percent_Range)
-    ws.Cells(2, 16) = Format(Max_Increase, [0.00] & "%")
+    ws.Cells(2, 16).Value = Max_Increase
     
     'Find and Assign Percent Change Max Decrease
     Max_Decrease = ws.Application.Min(Percent_Range)
-    ws.Cells(3, 16) = Format(Max_Decrease, [0.00] & "%")
+    ws.Cells(3, 16).Value = Max_Decrease
     
     'Find and Assign Max Total Volume
-    Set Volume_Range = ws.Columns(12)
-    Max_Total_Vol = ws.Application.Max(Volume_Range)
-    ws.range("P4") = Max_Volume
-    
+    Set Volume_Range = ws.Columns("L")
+    Max_Volume = ws.Application.Max(Volume_Range)
+    ws.Cells(4, 16).Value = Max_Volume
+   
    'Challenge Tickers
-    Dim Ticker_Max As String
-    Dim Ticker_Min As String
+    Dim Ticker_Increase As String
+    Dim Ticker_Decrease As String
     Dim Ticker_Max_Vol As String
     
     LastRow2 = ws.Cells(Rows.Count, 11).End(xlUp).Row
     
     For j = 2 To LastRow2
         If ws.Cells(j, 11) = Max_Increase Then
-            Ticker_Increase = ws.Cells(j, 9)
+            Ticker_Increase = ws.Cells(j, 9).Value
         End If
         
     
         If ws.Cells(j, 11) = Max_Decrease Then
-            Ticker_Decrease = ws.Cells(j, 9)
+            Ticker_Decrease = ws.Cells(j, 9).Value
             
         End If
             
         If ws.Cells(j, 12) = Max_Volume Then
-            Ticker_Max_Vol = ws.Cells(j, 9)
+            Ticker_Max_Vol = ws.Cells(j, 9).Value
             
         End If
             
     Next j
     
-    ws.Cells(2, 15) = Ticker_Max
-    ws.Cells(3, 15) = Ticker_Min
-    ws.Cells(4, 15) = Ticker_Max_Vol
+    ws.Cells(2, 15).Value = Ticker_Increase
+    ws.Cells(3, 15).Value = Ticker_Decrease
+    ws.Cells(4, 15).Value = Ticker_Max_Vol
 
   Next ws
 End Sub
