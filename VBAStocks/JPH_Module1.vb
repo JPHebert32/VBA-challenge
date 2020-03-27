@@ -10,6 +10,15 @@ Dim Percent_Change As Double
 'run through each worksheet
 For Each ws In ThisWorkbook.Worksheets
     'set headers
+    ws.Columns("I").ColumnWidth = 6
+    ws.Columns("J").ColumnWidth = 12
+    ws.Columns("K").ColumnWidth = 13
+    ws.Columns("L").ColumnWidth = 16
+    ws.Columns("M").ColumnWidth = 6
+    ws.Columns("N").ColumnWidth = 18.5
+    ws.Columns("O").ColumnWidth = 6
+    ws.Columns("P").ColumnWidth = 14.5
+
     ws.Cells(1, 9).Value = "Ticker"
     ws.Cells(1, 10).Value = "Yearly Change"
     ws.Cells(1, 11).Value = "Percent Change"
