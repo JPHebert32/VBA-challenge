@@ -9,14 +9,14 @@ Dim Percent_Change As Double
 
 'run through each worksheet
 For Each ws In ThisWorkbook.Worksheets
-    'set headers
-    ws.Columns("I").ColumnWidth = 6
+    'set Headers and Column Width
+    ws.Columns("I").ColumnWidth = 6.5
     ws.Columns("J").ColumnWidth = 12
     ws.Columns("K").ColumnWidth = 13
     ws.Columns("L").ColumnWidth = 16
-    ws.Columns("M").ColumnWidth = 6
+    ws.Columns("M").ColumnWidth = 6.5
     ws.Columns("N").ColumnWidth = 18.5
-    ws.Columns("O").ColumnWidth = 6
+    ws.Columns("O").ColumnWidth = 6.5
     ws.Columns("P").ColumnWidth = 14.5
 
     ws.Cells(1, 9).Value = "Ticker"
@@ -37,8 +37,8 @@ For Each ws In ThisWorkbook.Worksheets
     Dim Volume As Double
     Dim Ticker_Count As Integer
     Volume = 0
-
     Ticker_Count = 0
+
     ' Keep track of the location for summary table
     Dim Summary_Table_Row As Integer
     Summary_Table_Row = 2
@@ -132,11 +132,11 @@ For Each ws In ThisWorkbook.Worksheets
     'Find and Assign Percent Change Max Increase
     Set Percent_Range = ws.Columns("K")
     Max_Increase = ws.Application.Max(Percent_Range)
-    ws.Cells(2, 16).Value = Max_Increase
+    ws.Cells(2, 16).Value = Format(Max_Increase, ["0.00"] & "%")
     
     'Find and Assign Percent Change Max Decrease
     Max_Decrease = ws.Application.Min(Percent_Range)
-    ws.Cells(3, 16).Value = Max_Decrease
+    ws.Cells(3, 16).Value = Format(Max_Decrease, ["0.00"] & "%")
     
     'Find and Assign Max Total Volume
     Set Volume_Range = ws.Columns("L")
